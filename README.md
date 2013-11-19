@@ -12,7 +12,7 @@ The easiest way to install the library is with pip. To install pip on your Raspb
 distribution, type:
 
 ```
-sudo apt-get install python-pip
+sudo apt-get install python-dev python-pip
 ```
 
 Once pip is installed, you can use it to install the `bergcloud` library:
