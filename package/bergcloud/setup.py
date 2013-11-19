@@ -1,0 +1,31 @@
+from distutils.core import setup, Extension
+
+setup(  name = 'bergcloud',
+        version = '1.0',
+        description = 'BERGCloud library',
+        long_description = 'BERGCloud library',
+        author = 'BERG Cloud Ltd',
+        author_email = 'support@bergcloud.com',
+        url = 'http://bergcloud.com',
+        license = 'MIT',
+        platforms = ['Linux'],
+        classifiers = [ 'Intended Audience :: Developers',
+                        'License :: OSI Approved :: MIT License',
+                        'Operating System :: POSIX :: Linux',
+                        'Programming Language :: Python',
+                        'Topic :: Software Development :: Libraries',
+                        'Natural Language :: English',
+                        'Development Status :: 4 - Beta',
+                        ],
+        packages = ['bergcloud'],
+        package_dir = {'bergcloud': 'src'},
+        py_modules = ['bergcloud.BERGCloud'],
+        ext_modules = [Extension(   'bergcloud._BERGCloud',
+                                    [   'src/BERGCloudBase.cpp',
+                                        'src/BERGCloudLinux.cpp',
+                                        'src/BERGCloud_wrap.cpp'
+                                        ],
+                                    define_macros = [('LINUX', None)],
+                                    libraries = ['rt'],
+                                    )]
+    )
