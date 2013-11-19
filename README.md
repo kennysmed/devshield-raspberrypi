@@ -11,11 +11,15 @@ Installation
 The easiest way to install the library is with pip. To install pip on your Raspbian
 distribution, type:
 
-  sudo apt-get install python-pip
+```
+sudo apt-get install python-pip
+```
 
 Once pip is installed, you can use it to install the `bergcloud` library:
 
-  sudo pip install bergcloud
+```
+sudo pip install bergcloud
+```
 
 Example code
 ------------
@@ -23,7 +27,8 @@ Example code
 To run the example code, simply go into the examples/ folder and run little_counter.py.
 Don't forget to attach your BERG Cloud Devshield to your Raspberry Pi!
 
+```
   cd examples/
   python little_counter.py
-
+```
 
