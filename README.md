@@ -42,9 +42,7 @@ typing:
 
 Depending on how old your installation of the raspbian Linux operating system is,
 you may need to add yourself to the `spi` group. You can check if you are already
-a member by typing:
-
-```groups```
+a member by checking the output of the `groups` command.
 
 If you see `spi` in the list, you are good to go. If you do not, then run the
 following command:
@@ -65,3 +63,8 @@ Don't forget to attach your BERG Cloud Devshield to your Raspberry Pi!
   python little_counter.py
 ```
 
+
+Contact
+-------
+
+For more information see http://bergcloud.com/
