@@ -8,18 +8,51 @@ directory.
 Installation
 ------------
 
-The easiest way to install the library is with pip. To install pip on your Raspbian
-distribution, type:
+The easiest way to install the library is with pip. To install it and the other
+required libraries on your Raspbian distribution, type:
 
 ```
-sudo apt-get install python-dev python-pip
+sudo apt-get install python-dev python-pip msgpack-python
 ```
 
-Once pip is installed, you can use it to install the `bergcloud` library:
+Once these are installed, you can use pip to install the `bergcloud` library:
 
 ```
 sudo pip install bergcloud
 ```
+
+Adding the SPI driver
+---------------------
+
+In order to communicate with the Devshield you'll need to modify the system so that
+it loads the ```spidev``` device driver. This can be done with the following steps:
+
+```sudo nano /etc/modprobe.d/raspi-blacklist.conf```
+
+Add a '#' to the start of the line saying ```spi-bcm2708``` and save the file. This
+will ensure that the ```spidev``` driver is loaded when the system boots, so now
+restart the system with:
+
+```sudo reboot```
+
+When the system comes back up, you should be able to see the spidev driver by
+typing:
+
+```ls -l /dev/spidev0.0```
+
+Depending on how old your installation of the raspbian Linux operating system is,
+you may need to add yourself to the `spi` group. You can check if you are already
+a member by typing:
+
+```groups```
+
+If you see `spi` in the list, you are good to go. If you do not, then run the
+following command:
+
+```sudo adduser <your username> spi```
+
+If you don't know your username, you can type `whoami` and it will tell you.
+
 
 Example code
 ------------
