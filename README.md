@@ -63,6 +63,10 @@ Don't forget to attach your BERG Cloud Devshield to your Raspberry Pi!
   python little_counter.py
 ```
 
+Documentation
+-------------
+
+See http://remote.bergcloud.com/developers/platform/reference/software/client-library for a description of the methods and examples.
 
 Contact
 -------
