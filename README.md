@@ -21,6 +21,12 @@ Once these are installed, you can use pip to install the `bergcloud` library:
 sudo pip install bergcloud
 ```
 
+Depending on the version of Raspbian you're running you may find you get the following error when running the example code ```TypeError: __init__() got an unexpected keyword argument 'autoreset'```. In which case you can fix this by upgrading msgpack-python with the following command.
+
+```
+sudo pip install --upgrade msgpack-python
+```
+
 Adding the SPI driver
 ---------------------
 
