@@ -1,7 +1,7 @@
 from distutils.core import setup, Extension
 
 setup(  name = 'bergcloud',
-        version = '1.0',
+        version = '2.0',
         description = 'BERGCloud library',
         long_description = 'BERGCloud library',
         author = 'BERG Cloud Ltd',

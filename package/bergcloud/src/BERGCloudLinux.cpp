@@ -134,14 +134,6 @@ uint16_t BERGCloudLinux::getHostType(void)
 /* The following methods are a temporary workaround */
 /* for issues dealing with references in SWIG. */
 
-bool BERGCloudLinux::connect(const uint8_t *key, uint16_t version, bool waitForConnected)
-{
-  uint8_t temp[BC_KEY_SIZE_BYTES];
-
-  memcpy(temp, key, sizeof(temp));
-  return BERGCloudBase::connect(temp, version, waitForConnected);
-}
-
 bool BERGCloudLinux::getClaimcode(const char *claimcode)
 {
   char temp[BC_CLAIMCODE_SIZE_BYTES];

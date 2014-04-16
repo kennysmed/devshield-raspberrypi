@@ -40,7 +40,6 @@ public:
   /* Methods using std::string class */
   bool display(std::string& s);
   /* Methods using pointers, for SWIG */
-  bool connect(const uint8_t *key, uint16_t version, bool waitForConnected);
   bool getClaimcode(const char *claimcode);
   bool getEUI64(uint8_t type, uint8_t *eui64);
   bool getDeviceAddress(uint8_t *address);
