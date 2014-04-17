@@ -11,8 +11,7 @@ import time
 import msgpack
 
 # The Project Key ties this code into a Project on developer.bergcloud.com
-PROJECT_KEY = (0x8B,0x05,0xF7,0x25,0x10,0x54,0x0A,0xE4,
-               0x7C,0x35,0xEE,0xE7,0x26,0xDC,0xD5,0xA8)
+PROJECT_KEY = "8B05F72510540AE47C35EEE726DCD5A8"
 
 # The version of your code
 VERSION = 0x0001
@@ -28,9 +27,7 @@ counter = 0
 def littleCounter():
     global counter
 
-    # Here we can map the command IDs to method calls within our code
-    commandMap = {  COMMAND_SET_COUNTER : handleSetCounter,
-                    COMMAND_GREET       : handleGreet}
+    commandList = ["setCounter", "greet"]
 
     # Create an instance of BERGCloudLinux
     b = BERGCloud.BERGCloudLinux()
@@ -51,10 +48,10 @@ def littleCounter():
         print "Poll for command... ",
 
         try:
-            commandID, commandData = b.pollForCommand()
-            print "got command with ID: %i" % commandID
+            commandName, commandData = b.pollForCommand()
+            print "got command with name: %s" % commandName
 
-            if commandID in commandMap:
+            if commandName in commandList:
                 # Unpack the data using MessagePack
                 unpacker = msgpack.Unpacker(encoding = 'utf-8')
                 unpacker.feed(commandData)
@@ -65,7 +62,11 @@ def littleCounter():
                     itemList.append(item)
 
                 # Call handler for this command
-                commandMap[commandID](b, itemList)
+                if commandName == "setCounter":
+                    handleSetCounter(b, itemList)
+                elif commandName == "greet":
+                    handleGreet(b, itemList)
+
             else:
                 print "WARNING: Unknown command"
         except BERGCloud.BERGCloudException as e:
@@ -92,7 +93,7 @@ def littleCounter():
 
         # Send the event object
         try:
-            b.sendEvent(EVENT_COUNTER_CHANGED, packer.bytes(), True) # 'True' flags the event as containing messagePack data
+            b.sendEvent("counterChanged", packer.bytes(), True) # 'True' flags the event as containing messagePack data
             print "ok"
         except BERGCloud.BERGCloudException:
             print "failed/busy"
